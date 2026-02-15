@@ -3,38 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nozélis - Gérez vos finances INAMI simplement</title>
+    <title>Nozélis - Vos finances INAMI enfin simples</title>
+    <meta name="description" content="Système financier intelligent pour thérapeutes INAMI. Économisez 8h/semaine et maîtrisez vos finances.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ========================================
-           VARIABLES & MODERN RESET
-        ======================================== */
         :root {
-            /* Colors - Dark Theme Premium */
-            --midnight: #0A0E1A;
-            --slate: #141B2E;
-            --slate-light: #1E2942;
-            --accent: #00F5A0;
-            --accent-glow: rgba(0, 245, 160, 0.3);
-            --purple: #A78BFA;
-            --blue: #60A5FA;
-            --orange: #FB923C;
-            --text-primary: #E2E8F0;
-            --text-secondary: #94A3B8;
+            /* Nozélis Branding Colors */
+            --midnight: #0A1621;
+            --navy: #1A3A4D;
+            --turquoise: #4DB8C4;
+            --turquoise-rgb: 77, 184, 196;
+            --coral: #FF8563;
+            --gold: #F4B942;
+            --text-primary: #F8FAFC;
+            --text-muted: #94A3B8;
             --border: rgba(148, 163, 184, 0.1);
             
-            /* Typography */
-            --font-display: 'Archivo', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            
-            /* Spacing */
-            --section-padding: clamp(80px, 15vw, 160px);
-            --container-width: 1400px;
+            --font-body: 'Inter', sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+            --section-padding: clamp(80px, 12vw, 140px);
         }
         
         * {
@@ -44,65 +36,53 @@
         }
         
         body {
-            font-family: var(--font-display);
+            font-family: var(--font-body);
             background: var(--midnight);
             color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
         }
         
         ::selection {
-            background: var(--accent);
+            background: var(--turquoise);
             color: var(--midnight);
         }
         
-        /* ========================================
-           UTILITIES
-        ======================================== */
         .container {
-            max-width: var(--container-width);
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 clamp(20px, 5vw, 60px);
+            padding: 0 24px;
         }
         
-        .glow {
-            text-shadow: 0 0 40px var(--accent-glow);
-        }
-        
-        /* ========================================
-           NAVIGATION - Floating Modern
-        ======================================== */
+        /* Navigation */
         .nav {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 33, 0.9);
             backdrop-filter: blur(20px);
-            background: rgba(20, 27, 46, 0.8);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 12px 24px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
         
-        .nav:hover {
-            background: rgba(20, 27, 46, 0.95);
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 20px 60px rgba(0, 245, 160, 0.1);
+        .nav.scrolled {
+            background: rgba(10, 22, 33, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
         
         .nav-container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 40px;
+            height: 72px;
         }
         
         .logo {
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 24px;
+            font-weight: 700;
+            font-family: var(--font-display);
             color: var(--text-primary);
             text-decoration: none;
             display: flex;
@@ -112,75 +92,61 @@
         }
         
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
+            font-size: 20px;
         }
         
         .nav-cta {
-            background: var(--accent);
-            color: var(--midnight);
-            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--turquoise), #2D8A99);
+            color: white;
+            padding: 12px 28px;
             border-radius: 100px;
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.5px;
+            box-shadow: 0 4px 16px rgba(var(--turquoise-rgb), 0.3);
         }
         
         .nav-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px var(--accent-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(var(--turquoise-rgb), 0.4);
         }
         
-        /* ========================================
-           HERO SECTION - Full Screen Impact
-        ======================================== */
+        /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+            padding: 160px 0 100px;
             position: relative;
             overflow: hidden;
-            padding: 120px 0 80px;
         }
         
         .hero::before {
             content: '';
             position: absolute;
             top: -50%;
-            right: -30%;
+            right: -20%;
             width: 1000px;
             height: 1000px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(var(--turquoise-rgb), 0.15), transparent 70%);
             border-radius: 50%;
             animation: pulse 8s ease-in-out infinite;
         }
         
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.5; }
         }
         
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 80px;
-            align-items: center;
+        .hero-content {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
             position: relative;
             z-index: 1;
         }
@@ -188,24 +154,23 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             padding: 8px 20px;
-            background: rgba(167, 139, 250, 0.1);
-            border: 1px solid rgba(167, 139, 250, 0.3);
+            background: rgba(var(--turquoise-rgb), 0.1);
+            border: 1px solid rgba(var(--turquoise-rgb), 0.3);
             border-radius: 100px;
             font-size: 13px;
             font-weight: 600;
-            color: var(--purple);
-            margin-bottom: 32px;
-            animation: slideDown 0.8s ease backwards;
-            letter-spacing: 0.5px;
+            color: var(--turquoise);
+            margin-bottom: 24px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .badge-dot {
             width: 8px;
             height: 8px;
-            background: var(--purple);
+            background: var(--turquoise);
             border-radius: 50%;
             animation: blink 2s ease-in-out infinite;
         }
@@ -215,336 +180,319 @@
             50% { opacity: 0.3; }
         }
         
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
         .hero-title {
-            font-size: clamp(40px, 7vw, 84px);
-            font-weight: 900;
-            line-height: 1.05;
-            margin-bottom: 32px;
-            letter-spacing: -2px;
-            animation: slideUp 0.8s ease 0.1s backwards;
-        }
-        
-        .hero-title .highlight {
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .hero-title .bracket {
-            color: var(--text-secondary);
-            font-weight: 300;
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(18px, 2vw, 24px);
-            color: var(--text-secondary);
-            margin-bottom: 48px;
-            line-height: 1.7;
-            max-width: 600px;
-            animation: slideUp 0.8s ease 0.2s backwards;
-        }
-        
-        .hero-cta-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 56px;
-            animation: slideUp 0.8s ease 0.3s backwards;
-        }
-        
-        .btn {
-            padding: 18px 40px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.3px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        .btn-primary {
-            background: var(--accent);
-            color: var(--midnight);
-            box-shadow: 0 8px 30px var(--accent-glow);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px var(--accent-glow);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--slate-light);
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            animation: slideUp 0.8s ease 0.4s backwards;
-        }
-        
-        .stat {
-            border-left: 2px solid var(--accent);
-            padding-left: 20px;
-        }
-        
-        .stat-number {
-            font-size: 36px;
-            font-weight: 900;
-            color: var(--accent);
-            display: block;
-            letter-spacing: -1px;
-            font-family: var(--font-mono);
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        
-        .hero-visual {
-            position: relative;
-            animation: slideUp 0.8s ease 0.5s backwards;
-        }
-        
-        .dashboard-mockup {
-            background: var(--slate);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .dashboard-mockup::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg at 50% 50%, transparent, var(--accent-glow), transparent);
-            animation: rotate 10s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .dashboard-inner {
-            position: relative;
-            background: var(--midnight);
-            border-radius: 12px;
-            padding: 24px;
-        }
-        
-        .mockup-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .mockup-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--accent);
-            font-family: var(--font-mono);
-        }
-        
-        .mockup-metrics {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-        
-        .metric-card {
-            background: var(--slate);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-        
-        .metric-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-        
-        .metric-value {
-            font-size: 28px;
+            font-size: clamp(40px, 7vw, 72px);
             font-weight: 800;
-            color: var(--accent);
-            font-family: var(--font-mono);
-        }
-        
-        .metric-change {
-            font-size: 12px;
-            color: var(--accent);
-            margin-top: 4px;
-        }
-        
-        /* ========================================
-           FEATURES GRID - Bento Style
-        ======================================== */
-        .features {
-            padding: var(--section-padding) 0;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 80px;
-        }
-        
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(96, 165, 250, 0.1);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            color: var(--blue);
-            font-size: 13px;
-            font-weight: 700;
-            border-radius: 100px;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .section-title {
-            font-size: clamp(36px, 5vw, 64px);
-            font-weight: 900;
+            font-family: var(--font-display);
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -1.5px;
         }
         
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        
+        .btn {
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--turquoise), #2D8A99);
+            color: white;
+            box-shadow: 0 8px 24px rgba(var(--turquoise-rgb), 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(var(--turquoise-rgb), 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(var(--turquoise-rgb), 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(var(--turquoise-rgb), 0.1);
+            border-color: var(--turquoise);
+            transform: translateY(-3px);
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .trust-icon {
+            color: var(--turquoise);
+            font-size: 18px;
+        }
+        
+        /* Calculator Section */
+        .calculator-section {
+            padding: var(--section-padding) 0;
+            background: var(--navy);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 64px;
+        }
+        
+        .section-label {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(var(--turquoise-rgb), 0.1);
+            color: var(--turquoise);
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 100px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            font-family: var(--font-display);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        
         .section-description {
-            font-size: 20px;
-            color: var(--text-secondary);
+            font-size: 18px;
+            color: var(--text-muted);
             line-height: 1.6;
         }
         
-        .bento-grid {
+        .calculator {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--midnight);
+            border-radius: 24px;
+            padding: 48px;
+            border: 1px solid rgba(var(--turquoise-rgb), 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .calculator-input-group {
+            margin-bottom: 32px;
+        }
+        
+        .calculator-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        
+        .calculator-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 100px;
+            background: var(--navy);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .calculator-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(var(--turquoise-rgb), 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .calculator-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .calculator-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(var(--turquoise-rgb), 0.4);
+            border: none;
+        }
+        
+        .calculator-input {
+            width: 100%;
+            background: var(--navy);
+            border: 2px solid rgba(var(--turquoise-rgb), 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 18px;
+            color: var(--text-primary);
+            font-family: var(--font-display);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .calculator-input:focus {
+            outline: none;
+            border-color: var(--turquoise);
+            box-shadow: 0 0 0 4px rgba(var(--turquoise-rgb), 0.1);
+        }
+        
+        .slider-value {
+            text-align: center;
+            margin-top: 12px;
+        }
+        
+        .slider-value-number {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: var(--font-display);
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .calculator-result {
+            background: linear-gradient(135deg, rgba(var(--turquoise-rgb), 0.1), rgba(255, 133, 99, 0.05));
+            border: 2px solid var(--turquoise);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .calculator-result-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .calculator-result-value {
+            font-size: 56px;
+            font-weight: 900;
+            font-family: var(--font-display);
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        
+        .calculator-result-text {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .calculator-result-text .highlight {
+            color: var(--turquoise);
+            font-weight: 700;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: var(--section-padding) 0;
+        }
+        
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
         }
         
-        .bento-item {
-            background: var(--slate);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+        .feature-card {
+            background: var(--navy);
             padding: 40px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
         }
         
-        .bento-item::before {
+        .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--purple));
+            background: linear-gradient(90deg, var(--turquoise), var(--gold));
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
         
-        .bento-item:hover::before {
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover::before {
             transform: scaleX(1);
         }
         
-        .bento-item:hover {
+        .feature-card:hover {
             transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 60px rgba(0, 245, 160, 0.1);
-        }
-        
-        .bento-item.large {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-        
-        .bento-item.wide {
-            grid-column: span 2;
+            border-color: var(--turquoise);
+            box-shadow: 0 20px 60px rgba(var(--turquoise-rgb), 0.15);
         }
         
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            border-radius: 14px;
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -553,297 +501,95 @@
         }
         
         .feature-title {
-            font-size: 22px;
-            font-weight: 800;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: var(--font-display);
             margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
         
         .feature-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
+            color: var(--text-muted);
+            line-height: 1.7;
             font-size: 15px;
         }
         
-        .feature-list {
-            list-style: none;
-            margin-top: 20px;
+        /* Pricing */
+        .pricing {
+            padding: var(--section-padding) 0;
+            background: var(--navy);
         }
         
-        .feature-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            color: var(--text-secondary);
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--midnight);
+            border-radius: 24px;
+            padding: 48px;
+            border: 2px solid var(--turquoise);
+            box-shadow: 0 24px 64px rgba(var(--turquoise-rgb), 0.2);
+            position: relative;
         }
         
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .feature-list li::before {
-            content: '→';
-            color: var(--accent);
+        .pricing-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            color: white;
+            padding: 8px 24px;
+            border-radius: 100px;
+            font-size: 13px;
             font-weight: 700;
-        }
-        
-        .feature-highlight {
-            background: rgba(0, 245, 160, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 245, 160, 0.2);
-            margin-top: 24px;
-        }
-        
-        .feature-highlight-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        .feature-highlight-text {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--text-primary);
-            font-family: var(--font-mono);
-        }
-        
-        /* ========================================
-           SYSTEM PREVIEW - Technical Showcase
-        ======================================== */
-        .system-preview {
-            padding: var(--section-padding) 0;
-            background: var(--slate);
-            position: relative;
-        }
-        
-        .preview-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .preview-content h3 {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 900;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
-        
-        .preview-content p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-        
-        .sheets-list {
-            display: grid;
-            gap: 12px;
-        }
-        
-        .sheet-item {
-            background: var(--midnight);
-            padding: 16px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .sheet-item:hover {
-            border-color: var(--accent);
-            transform: translateX(8px);
-        }
-        
-        .sheet-icon {
-            font-size: 24px;
-        }
-        
-        .sheet-name {
-            font-weight: 700;
-            color: var(--text-primary);
-            font-size: 15px;
-        }
-        
-        .sheet-desc {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
-        
-        .code-preview {
-            background: var(--midnight);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            font-family: var(--font-mono);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .code-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-        
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        
-        .code-dot.red { background: #EF4444; }
-        .code-dot.yellow { background: #F59E0B; }
-        .code-dot.green { background: var(--accent); }
-        
-        .code-lines {
-            font-size: 13px;
-            line-height: 1.8;
-        }
-        
-        .code-line {
-            display: flex;
-            gap: 24px;
-            opacity: 0;
-            animation: codeFadeIn 0.3s ease forwards;
-        }
-        
-        .code-line:nth-child(1) { animation-delay: 0.1s; }
-        .code-line:nth-child(2) { animation-delay: 0.2s; }
-        .code-line:nth-child(3) { animation-delay: 0.3s; }
-        .code-line:nth-child(4) { animation-delay: 0.4s; }
-        .code-line:nth-child(5) { animation-delay: 0.5s; }
-        .code-line:nth-child(6) { animation-delay: 0.6s; }
-        .code-line:nth-child(7) { animation-delay: 0.7s; }
-        
-        @keyframes codeFadeIn {
-            from {
-                opacity: 0;
-                transform: translateX(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .line-number {
-            color: var(--text-secondary);
-            user-select: none;
-            min-width: 20px;
-        }
-        
-        .code-text {
-            color: var(--text-primary);
-        }
-        
-        .code-function { color: var(--purple); }
-        .code-string { color: var(--accent); }
-        .code-number { color: var(--orange); }
-        .code-keyword { color: var(--blue); }
-        
-        /* ========================================
-           PRICING - Premium Card
-        ======================================== */
-        .pricing {
-            padding: var(--section-padding) 0;
-            position: relative;
-        }
-        
-        .pricing-card {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--slate);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--purple), var(--blue));
-            background-size: 200% 100%;
-            animation: gradientShift 3s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .pricing-badge {
-            display: inline-flex;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            color: var(--midnight);
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 32px;
-        }
-        
         .pricing-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
         
         .pricing-title {
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
+            font-size: 24px;
+            font-weight: 800;
+            font-family: var(--font-display);
+            margin-bottom: 8px;
         }
         
         .pricing-subtitle {
-            color: var(--text-secondary);
-            font-size: 16px;
+            color: var(--text-muted);
+            font-size: 15px;
         }
         
         .pricing-price {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
         
         .pricing-amount {
-            font-size: 80px;
+            font-size: 72px;
             font-weight: 900;
-            color: var(--accent);
+            font-family: var(--font-display);
+            background: linear-gradient(135deg, var(--turquoise), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             line-height: 1;
-            font-family: var(--font-mono);
-            letter-spacing: -3px;
+            letter-spacing: -2px;
         }
         
         .pricing-currency {
-            font-size: 40px;
+            font-size: 32px;
             vertical-align: super;
         }
         
         .pricing-period {
             display: block;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 16px;
-            margin-top: 16px;
+            margin-top: 12px;
             font-weight: 600;
         }
         
@@ -857,8 +603,8 @@
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            gap: 16px;
-            font-size: 16px;
+            gap: 12px;
+            font-size: 15px;
         }
         
         .pricing-features li:last-child {
@@ -867,72 +613,60 @@
         
         .pricing-features li::before {
             content: '✓';
+            width: 24px;
+            height: 24px;
+            background: rgba(var(--turquoise-rgb), 0.2);
+            color: var(--turquoise);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: rgba(0, 245, 160, 0.1);
-            color: var(--accent);
-            border-radius: 50%;
-            font-weight: 900;
+            font-weight: 700;
             flex-shrink: 0;
-        }
-        
-        .pricing-cta {
-            width: 100%;
-            padding: 24px;
-            font-size: 18px;
-            font-weight: 800;
-            justify-content: center;
         }
         
         .guarantee {
             text-align: center;
-            margin-top: 32px;
-            padding: 20px;
-            background: rgba(96, 165, 250, 0.05);
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(var(--turquoise-rgb), 0.1);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            color: var(--blue);
+            gap: 8px;
+            color: var(--turquoise);
             font-size: 14px;
-            font-weight: 700;
-            border: 1px solid rgba(96, 165, 250, 0.2);
+            font-weight: 600;
         }
         
-        /* ========================================
-           FAQ - Modern Accordion
-        ======================================== */
+        /* FAQ */
         .faq {
             padding: var(--section-padding) 0;
-            background: var(--slate);
         }
         
         .faq-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
         .faq-item {
-            background: var(--midnight);
+            background: var(--navy);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 12px;
             margin-bottom: 16px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
         
         .faq-item:hover {
-            border-color: var(--accent);
+            border-color: var(--turquoise);
         }
         
         .faq-question {
-            padding: 28px 32px;
-            font-size: 18px;
-            font-weight: 700;
+            padding: 24px;
+            font-size: 17px;
+            font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -941,22 +675,22 @@
         }
         
         .faq-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            background: var(--slate);
+            background: rgba(var(--turquoise-rgb), 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
             flex-shrink: 0;
-            font-weight: 300;
-            font-size: 24px;
+            font-size: 20px;
+            color: var(--turquoise);
         }
         
         .faq-item.active .faq-icon {
-            background: var(--accent);
-            color: var(--midnight);
+            background: var(--turquoise);
+            color: white;
             transform: rotate(45deg);
         }
         
@@ -967,27 +701,24 @@
         }
         
         .faq-answer-content {
-            padding: 0 32px 32px;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 16px;
+            padding: 0 24px 24px;
+            color: var(--text-muted);
+            line-height: 1.7;
         }
         
         .faq-item.active .faq-answer {
             max-height: 500px;
         }
         
-        /* ========================================
-           CTA - Final Push
-        ======================================== */
+        /* CTA */
         .cta-section {
             padding: var(--section-padding) 0;
-            position: relative;
+            background: var(--navy);
         }
         
         .cta-box {
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            border-radius: 32px;
+            background: linear-gradient(135deg, var(--turquoise), #2D8A99);
+            border-radius: 24px;
             padding: clamp(60px, 10vw, 100px);
             text-align: center;
             position: relative;
@@ -1001,8 +732,13 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
             animation: rotate 15s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .cta-content {
@@ -1013,43 +749,40 @@
         }
         
         .cta-title {
-            font-size: clamp(36px, 5vw, 56px);
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 900;
-            margin-bottom: 24px;
-            color: var(--midnight);
-            letter-spacing: -1.5px;
+            font-family: var(--font-display);
+            margin-bottom: 20px;
+            color: white;
+            letter-spacing: -1px;
         }
         
         .cta-description {
-            font-size: 20px;
-            margin-bottom: 40px;
-            color: rgba(10, 14, 26, 0.8);
-            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 32px;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .cta-button {
-            background: var(--midnight);
-            color: var(--accent);
-            padding: 24px 48px;
+            background: white;
+            color: var(--turquoise);
+            padding: 20px 48px;
             font-size: 18px;
             font-weight: 800;
-            border-radius: 16px;
+            border-radius: 12px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 12px;
             transition: all 0.3s ease;
-            letter-spacing: 0.5px;
         }
         
         .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(10, 14, 26, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
         }
         
-        /* ========================================
-           FOOTER - Minimal
-        ======================================== */
+        /* Footer */
         .footer {
             padding: 60px 0 40px;
             border-top: 1px solid var(--border);
@@ -1064,25 +797,25 @@
         
         .footer-logo {
             font-size: 24px;
-            font-weight: 900;
+            font-weight: 800;
+            font-family: var(--font-display);
             letter-spacing: -0.5px;
         }
         
         .footer-links {
             display: flex;
-            gap: 40px;
+            gap: 32px;
         }
         
         .footer-links a {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 14px;
             transition: color 0.3s ease;
-            font-weight: 500;
         }
         
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--turquoise);
         }
         
         .footer-bottom {
@@ -1090,52 +823,13 @@
             border-top: 1px solid var(--border);
             text-align: center;
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
         
-        /* ========================================
-           RESPONSIVE
-        ======================================== */
-        @media (max-width: 1200px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-            
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .bento-item.large {
-                grid-column: span 2;
-                grid-row: span 1;
-            }
-            
-            .preview-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-        
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                transform: none;
-                border-radius: 16px;
-            }
-            
-            .nav:hover {
-                transform: none;
-            }
-            
-            .nav-container {
-                gap: 20px;
-            }
-            
             .hero {
-                padding: 100px 0 60px;
+                padding: 120px 0 80px;
             }
             
             .hero-cta-group {
@@ -1147,169 +841,153 @@
                 justify-content: center;
             }
             
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            
-            .bento-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .bento-item.large,
-            .bento-item.wide {
-                grid-column: span 1;
+            .calculator {
+                padding: 32px 24px;
             }
             
             .pricing-card {
-                padding: 40px 24px;
-            }
-            
-            .pricing-amount {
-                font-size: 64px;
+                padding: 32px 24px;
             }
             
             .footer-content {
                 flex-direction: column;
                 gap: 24px;
-                text-align: center;
             }
             
             .footer-links {
                 flex-direction: column;
-                gap: 16px;
+                text-align: center;
+                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========================================
-         NAVIGATION
-    ======================================== -->
+    <!-- Navigation -->
     <nav class="nav" id="nav">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">📊</div>
-                Nozélis
-            </a>
-            <a href="#pricing" class="nav-cta">ACCÉDER →</a>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">📊</div>
+                    Nozélis
+                </a>
+                <a href="#pricing" class="nav-cta">Commencer →</a>
+            </div>
         </div>
     </nav>
 
-    <!-- ========================================
-         HERO SECTION
-    ======================================== -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-grid">
-                <div>
-                    <div class="hero-badge">
-                        <span class="badge-dot"></span>
-                        <span>Conforme INAMI 2026 • Utilisé par +100 thérapeutes</span>
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        Vos finances INAMI<br>enfin <span class="highlight">simples</span>
-                    </h1>
-                    
-                    <p class="hero-subtitle">
-                        Fini les soirées à calculer vos honoraires et impôts. Un fichier intelligent qui fait tout le travail à votre place. Plus de temps pour vos patients, moins de stress administratif.
-                    </p>
-                    
-                    <div class="hero-cta-group">
-                        <a href="#pricing" class="btn btn-primary">
-                            Accéder maintenant
-                            <span>→</span>
-                        </a>
-                        <a href="#demo" class="btn btn-secondary">
-                            <span>▶</span>
-                            Voir comment ça marche
-                        </a>
-                    </div>
-                    
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number">15min</span>
-                            <span class="stat-label">Pour tout configurer</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">8h</span>
-                            <span class="stat-label">Gagnées par semaine</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">197€</span>
-                            <span class="stat-label">Paiement unique, à vie</span>
-                        </div>
-                    </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Conforme INAMI 2026 • +100 thérapeutes</span>
                 </div>
                 
-                <div class="hero-visual">
-                    <div class="dashboard-mockup">
-                        <div class="dashboard-inner">
-                            <div class="mockup-header">
-                                <span style="font-size: 20px;">📊</span>
-                                <span class="mockup-title">DASHBOARD // FÉVRIER 2026</span>
-                            </div>
-                            <div class="mockup-metrics">
-                                <div class="metric-card">
-                                    <div class="metric-label">Revenus du mois</div>
-                                    <div class="metric-value">6.240€</div>
-                                    <div class="metric-change">↑ +12.5%</div>
-                                </div>
-                                <div class="metric-card">
-                                    <div class="metric-label">Marge nette</div>
-                                    <div class="metric-value">68%</div>
-                                    <div class="metric-change">↑ +3.2%</div>
-                                </div>
-                                <div class="metric-card">
-                                    <div class="metric-label">Créances INAMI</div>
-                                    <div class="metric-value">1.840€</div>
-                                    <div class="metric-change">En attente</div>
-                                </div>
-                                <div class="metric-card">
-                                    <div class="metric-label">Runway</div>
-                                    <div class="metric-value">8.2M</div>
-                                    <div class="metric-change">✓ Sain</div>
-                                </div>
-                            </div>
-                        </div>
+                <h1 class="hero-title">
+                    Vos finances INAMI<br>enfin <span class="highlight">simples</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Fini les soirées à calculer vos honoraires et impôts. Un fichier intelligent qui fait tout le travail à votre place. Plus de temps pour vos patients, moins de stress administratif.
+                </p>
+                
+                <div class="hero-cta-group">
+                    <a href="#calculator" class="btn btn-primary">
+                        Calculer mes économies
+                        <span>→</span>
+                    </a>
+                    <a href="#demo" class="btn btn-secondary">
+                        <span>▶</span>
+                        Voir la démo
+                    </a>
+                </div>
+                
+                <div class="trust-badge">
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span>Conforme INAMI 2026</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span>RGPD Compliant</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span>Paiement unique</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         FEATURES - BENTO GRID
-    ======================================== -->
+    <!-- Calculator -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">🧮 CALCULATEUR GRATUIT</span>
+                <h2 class="section-title">Combien vous coûte vraiment l'admin ?</h2>
+                <p class="section-description">
+                    Découvrez combien de temps et d'argent vous perdez chaque année en tâches administratives.
+                </p>
+            </div>
+            
+            <div class="calculator">
+                <div class="calculator-input-group">
+                    <label for="hours" class="calculator-label">Heures par semaine en admin</label>
+                    <input type="range" id="hours" class="calculator-slider" min="1" max="20" value="8" oninput="updateCalculation()">
+                    <div class="slider-value">
+                        <span id="hoursValue" class="slider-value-number">8</span>
+                        <span style="color: var(--text-muted); margin-left: 8px;">heures/semaine</span>
+                    </div>
+                </div>
+                
+                <div class="calculator-input-group">
+                    <label for="rate" class="calculator-label">Votre tarif horaire (€)</label>
+                    <input type="number" id="rate" class="calculator-input" value="60" min="30" max="150" oninput="updateCalculation()">
+                </div>
+                
+                <div class="calculator-result">
+                    <div class="calculator-result-label">Coût annuel de l'admin</div>
+                    <div class="calculator-result-value" id="totalCost">24.960€</div>
+                    <div class="calculator-result-text">
+                        C'est l'équivalent de <span class="highlight" id="sessions">416</span> séances par an perdues en paperasse.
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 32px;">
+                    <a href="#pricing" class="btn btn-primary">
+                        Économiser ce temps maintenant
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
     <section class="features">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">
-                    <span>⚡</span>
-                    CE QUI EST INCLUS
-                </span>
+                <span class="section-label">✨ CE QUI EST INCLUS</span>
                 <h2 class="section-title">Tout pour gérer vos finances<br>sans être comptable</h2>
                 <p class="section-description">
                     Un fichier Google Sheets intelligent avec tout ce qu'il faut pour suivre vos revenus INAMI, vos dépenses et vos impôts.
                 </p>
             </div>
             
-            <div class="bento-grid">
-                <div class="bento-item large">
+            <div class="features-grid">
+                <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3 class="feature-title">Votre tableau de bord personnel</h3>
                     <p class="feature-description">
-                        Voyez en un coup d'œil : combien vous gagnez ce mois, ce qui vous reste après les impôts, et si vous êtes sur la bonne voie pour atteindre vos objectifs.
+                        Voyez en un coup d'œil combien vous gagnez ce mois, ce qui reste après les impôts, et si vous êtes sur la bonne voie.
                     </p>
-                    <div class="feature-highlight">
-                        <div class="feature-highlight-title">Exemple : Ce mois vous avez gagné</div>
-                        <div class="feature-highlight-text">4.240€ net</div>
-                    </div>
                 </div>
                 
-                <div class="bento-item">
+                <div class="feature-card">
                     <div class="feature-icon">🏥</div>
                     <h3 class="feature-title">Tous les codes INAMI 2026</h3>
                     <p class="feature-description">
@@ -1317,7 +995,7 @@
                     </p>
                 </div>
                 
-                <div class="bento-item">
+                <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3 class="feature-title">Vos impôts calculés automatiquement</h3>
                     <p class="feature-description">
@@ -1325,21 +1003,15 @@
                     </p>
                 </div>
                 
-                <div class="bento-item wide">
+                <div class="feature-card">
                     <div class="feature-icon">✅</div>
                     <h3 class="feature-title">Liste de tâches intelligente</h3>
                     <p class="feature-description">
-                        Le fichier vous dit quoi faire et quand : "Relancer la mutuelle pour les 340€ en attente", "Attention, vous approchez du seuil TVA"...
+                        Le fichier vous dit quoi faire et quand : "Relancer la mutuelle", "Attention au seuil TVA"...
                     </p>
-                    <ul class="feature-list">
-                        <li>Rappels pour relancer les mutuelles</li>
-                        <li>Alertes si votre trésorerie est basse</li>
-                        <li>Rappels d'échéances TVA/IPP</li>
-                        <li>Suivi des attestations en attente</li>
-                    </ul>
                 </div>
                 
-                <div class="bento-item">
+                <div class="feature-card">
                     <div class="feature-icon">📈</div>
                     <h3 class="feature-title">Prévisions simples</h3>
                     <p class="feature-description">
@@ -1347,7 +1019,7 @@
                     </p>
                 </div>
                 
-                <div class="bento-item">
+                <div class="feature-card">
                     <div class="feature-icon">🔒</div>
                     <h3 class="feature-title">Vos données protégées</h3>
                     <p class="feature-description">
@@ -1358,120 +1030,16 @@
         </div>
     </section>
 
-    <!-- ========================================
-         SYSTEM PREVIEW
-    ======================================== -->
-    <section class="system-preview">
-        <div class="container">
-            <div class="preview-grid">
-                <div class="preview-content">
-                    <h3>Comment ça marche<br>concrètement ?</h3>
-                    <p>
-                        C'est un fichier Google Sheets (comme Excel) avec plusieurs onglets. Chaque onglet a une fonction précise. Vous entrez vos séances et dépenses, le reste se calcule automatiquement.
-                    </p>
-                    
-                    <div class="sheets-list">
-                        <div class="sheet-item">
-                            <span class="sheet-icon">📖</span>
-                            <div>
-                                <div class="sheet-name">Guide INAMI</div>
-                                <div class="sheet-desc">Explications sur tous les codes</div>
-                            </div>
-                        </div>
-                        <div class="sheet-item">
-                            <span class="sheet-icon">✅</span>
-                            <div>
-                                <div class="sheet-name">Liste de choses à faire</div>
-                                <div class="sheet-desc">Ce qu'il faut faire et quand</div>
-                            </div>
-                        </div>
-                        <div class="sheet-item">
-                            <span class="sheet-icon">⚙️</span>
-                            <div>
-                                <div class="sheet-name">Vos tarifs</div>
-                                <div class="sheet-desc">Configurez vos prix une seule fois</div>
-                            </div>
-                        </div>
-                        <div class="sheet-item">
-                            <span class="sheet-icon">📥</span>
-                            <div>
-                                <div class="sheet-name">Vos séances INAMI</div>
-                                <div class="sheet-desc">Encodez vos prestations ici</div>
-                            </div>
-                        </div>
-                        <div class="sheet-item">
-                            <span class="sheet-icon">💸</span>
-                            <div>
-                                <div class="sheet-name">Vos dépenses</div>
-                                <div class="sheet-desc">Loyer, matériel, formations...</div>
-                            </div>
-                        </div>
-                        <div class="sheet-item">
-                            <span class="sheet-icon">📊</span>
-                            <div>
-                                <div class="sheet-name">Votre tableau de bord</div>
-                                <div class="sheet-desc">Tout votre mois en un coup d'œil</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="code-preview">
-                    <div class="code-header">
-                        <div class="code-dot red"></div>
-                        <div class="code-dot yellow"></div>
-                        <div class="code-dot green"></div>
-                    </div>
-                    <div class="code-lines">
-                        <div class="code-line">
-                            <span class="line-number">1</span>
-                            <span class="code-text"><span class="code-keyword">=SUMIFS</span>(<span class="code-string">'📥 DATA_REVENUS'!G:G</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">2</span>
-                            <span class="code-text">  <span class="code-string">'📥 DATA_REVENUS'!B:B</span>,<span class="code-string">">=2026-02-01"</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">3</span>
-                            <span class="code-text">  <span class="code-string">'📥 DATA_REVENUS'!B:B</span>,<span class="code-string">"<2026-03-01"</span>)</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">4</span>
-                            <span class="code-text"></span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">5</span>
-                            <span class="code-text"><span class="code-keyword">=VLOOKUP</span>(<span class="code-string">D5</span>,<span class="code-string">'⚙️ CONFIG'!E:H</span>,<span class="code-number">3</span>,<span class="code-number">FALSE</span>)</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">6</span>
-                            <span class="code-text"></span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">7</span>
-                            <span class="code-text"><span class="code-comment">// Auto-calcul remboursement mutuelle</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================
-         PRICING
-    ======================================== -->
+    <!-- Pricing -->
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">
-                    <span>💎</span>
-                    PRIX
-                </span>
+                <span class="section-label">💎 PRIX</span>
                 <h2 class="section-title">197€ une seule fois,<br>à vous pour toujours</h2>
             </div>
             
             <div class="pricing-card">
-                <div class="pricing-badge">OFFRE LANCEMENT</div>
+                <div class="pricing-badge">Offre Lancement</div>
                 
                 <div class="pricing-header">
                     <h3 class="pricing-title">Nozélis PRO</h3>
@@ -1498,8 +1066,8 @@
                     <li>10 modèles de documents bonus</li>
                 </ul>
                 
-                <a href="VOTRE_LIEN_SYSTEME_IO" class="btn btn-primary pricing-cta">
-                    Accéder maintenant
+                <a href="VOTRE_LIEN_STRIPE" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    Commencer maintenant
                     <span>→</span>
                 </a>
                 
@@ -1511,16 +1079,11 @@
         </div>
     </section>
 
-    <!-- ========================================
-         FAQ
-    ======================================== -->
+    <!-- FAQ -->
     <section class="faq">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">
-                    <span>❓</span>
-                    FAQ
-                </span>
+                <span class="section-label">❓ FAQ</span>
                 <h2 class="section-title">Questions fréquentes</h2>
             </div>
             
@@ -1600,9 +1163,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         CTA FINAL
-    ======================================== -->
+    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-box">
@@ -1620,9 +1181,7 @@
         </div>
     </section>
 
-    <!-- ========================================
-         FOOTER
-    ======================================== -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1640,28 +1199,43 @@
         </div>
     </footer>
 
-    <!-- ========================================
-         JAVASCRIPT
-    ======================================== -->
+    <!-- JavaScript -->
     <script>
-        // FAQ Accordion
+        // Navigation scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Calculator
+        function updateCalculation() {
+            const hours = document.getElementById('hours').value;
+            const rate = document.getElementById('rate').value;
+            
+            const weeksPerYear = 48;
+            const totalCost = hours * rate * weeksPerYear;
+            const sessions = Math.round(totalCost / rate);
+            
+            document.getElementById('hoursValue').textContent = hours;
+            document.getElementById('totalCost').textContent = totalCost.toLocaleString('fr-BE') + '€';
+            document.getElementById('sessions').textContent = sessions;
+        }
+
+        // FAQ
         const faqItems = document.querySelectorAll('.faq-item');
-        
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
-            
             question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all items
                 faqItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
                 });
-                
-                // Toggle current item
-                if (!isActive) {
-                    item.classList.add('active');
-                }
+                item.classList.toggle('active');
             });
         });
 
@@ -1679,28 +1253,8 @@
             });
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements
-        document.querySelectorAll('.bento-item, .sheet-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
+        // Initialize
+        updateCalculation();
     </script>
 
 </body>
